@@ -1,4 +1,4 @@
-import { Form, Label } from './../ContactForm/ContactForm.styled';
+import { Form, Label, Button, Input, ButtonText } from './../ContactForm/ContactForm.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/AuthOperations';
@@ -11,7 +11,6 @@ export const RegistrationForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        // const form = e.currentTarget;
 
         dispatch(
         register({
@@ -48,11 +47,11 @@ export const RegistrationForm = () => {
         <Form onSubmit={handleSubmit}>
         <Label>
             Enter your name
-            <input type="text" name="name" value={name} onChange={handleChange} />
+            <Input type="text" name="name" value={name} onChange={handleChange} />
         </Label>
         <Label>
             Enter your email
-            <input
+            <Input
             type="email"
             name="email"
             value={email}
@@ -61,7 +60,7 @@ export const RegistrationForm = () => {
         </Label>
         <Label>
             Enter your password
-            <input
+            <Input
             type="password"
             name="password"
             value={password}
@@ -69,7 +68,7 @@ export const RegistrationForm = () => {
             />
         </Label>
 
-        <button type="submit">Sign In</button>
+        <Button type="submit"><ButtonText>Sign In</ButtonText></Button>
         </Form>
     );
 };

@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { MainTitle } from './HomePage.styled'
 
 import { fetchContacts } from '../redux/Operations';
-// import { Container } from './../../components/App.styled';
 import { ContactForm } from '../components/ContactForm/ContactForm';
 import { Filter } from '../components/Filter/Filter';
 import { ContactList } from '../components/ContsctList/ContsctList';
@@ -16,9 +16,9 @@ export const ContactsPage = () => {
     }, [dispatch]);
     return (
         <>
-        <h1>Phonebook</h1>
+        <MainTitle>Phonebook</MainTitle>
         <ContactForm />
-        <h2>Contacts</h2>
+        <MainTitle>Contacts</MainTitle>
         <Filter />
         {contacts && <ContactList />}
         </>

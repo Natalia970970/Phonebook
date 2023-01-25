@@ -1,7 +1,9 @@
-// import { LogoutBtn, UserMenuLinks, User } from './UserMenu.styled';
 import { useSelector, useDispatch } from 'react-redux';
-// import { selectUser } from 'Redux/auth/authSelectors';
 import { logOut } from './../../redux/AuthOperations';
+import { UserMenuLinks } from './UserMenu.styled';
+import { Button } from 'components/ContactForm/ContactForm.styled';
+import { HomeText } from '../../pages/HomePage.styled'
+
 export const UserMenu = () => {
     const user = useSelector(state => state.auth.user);
     const dispatch = useDispatch();
@@ -9,9 +11,9 @@ export const UserMenu = () => {
         dispatch(logOut());
     };
     return (
-        <ul>
-        <li>{user.email}</li>
-        <button onClick={() => handleLogout()}>Logout</button>
-        </ul>
+        <UserMenuLinks>
+        <HomeText>{user.email}</HomeText>
+        <Button onClick={() => handleLogout()}>Logout</Button>
+        </UserMenuLinks>
     );
 };

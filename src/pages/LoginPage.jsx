@@ -1,9 +1,9 @@
 import { LoginForm } from '../components/LoginForm/LoginForm';
-// import { LoginBox } from './Login.styled';
+import { RegistrationBox } from './RegistrationPage.styled';
 export const LoginPage = () => {
     return (
-        // <LoginBox>
+        <RegistrationBox>
             <LoginForm />
-        /* </LoginBox> */
+        </RegistrationBox>
     );
 };

@@ -1,4 +1,4 @@
-import { Form, Label } from './../ContactForm/ContactForm.styled';
+import { Form, Label, Input, Button } from './../ContactForm/ContactForm.styled';
 import { useState } from 'react';
 import { logIn } from '../../redux/AuthOperations';
 import { useDispatch } from 'react-redux';
@@ -40,7 +40,7 @@ export const LoginForm = () => {
     <Form onSubmit={handleSubmit}>
       <Label>
         Enter your email
-        <input
+        <Input
           type="email"
           name="email"
           value={email}
@@ -49,7 +49,7 @@ export const LoginForm = () => {
       </Label>
       <Label>
         Enter your password
-        <input
+        <Input
           type="password"
           name="password"
           value={password}
@@ -57,7 +57,7 @@ export const LoginForm = () => {
         />
       </Label>
 
-      <button type="submit">Log In</button>
+      <Button type="submit">Log In</Button>
     </Form>
   );
 };

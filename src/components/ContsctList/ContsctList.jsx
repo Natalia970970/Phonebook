@@ -1,4 +1,5 @@
-import {List, ListItem} from './ContsctList.styled';
+import {List, ListItem } from './ContsctList.styled';
+import { Button } from 'components/ContactForm/ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/Operations';
 
@@ -27,7 +28,7 @@ export const ContactList = () => {
             return (
                 <ListItem key={id}>
                     {name}: {number}
-                    <button type='button' onClick={() => deleteContactById(id)}>Delete</button>
+                    <Button type='button' onClick={() => deleteContactById(id)}>Delete</Button>
                 </ListItem>
             );
         })}

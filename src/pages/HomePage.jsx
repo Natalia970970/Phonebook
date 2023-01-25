@@ -1,9 +1,17 @@
+import { HomeBox, MainTitle, HomeText, HomeLink } from './HomePage.styled';
+import { useSelector } from 'react-redux';
+
 export const Home = () => {
+    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+
     return (
-        <div>
-            <h1>
+        <HomeBox>
+            <MainTitle>
                 Your Phonebook
-            </h1>
-        </div>
+            </MainTitle>
+            {!isLoggedIn && 
+                <HomeText>Please <HomeLink to="/register">register</HomeLink> or <HomeLink to="/login">login</HomeLink> to use Your Phonebook</HomeText>
+            }
+        </HomeBox>
         );
 };
