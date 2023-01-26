@@ -5,7 +5,6 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import { Loading } from './Loading/Loading';
 
-
 import { Home } from '../pages/HomePage';
 import { RegistrationPage } from '../pages/RegistrationPage';
 import { LoginPage } from '../pages/LoginPage';
@@ -15,6 +14,9 @@ import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 
 import { refreshUser } from './../redux/AuthOperations';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -28,32 +30,35 @@ export const App = () => {
     isRefreshing ? (
       <Loading />
     ) : (
-      <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />}></Route>
-        <Route
-          path="/register"
-          element={
-            <PublicRoute
-              redirectTo="/contacts"
-              component={<RegistrationPage />}
+      <>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />}></Route>
+            <Route
+              path="/register"
+              element={
+                <PublicRoute
+                  redirectTo="/contacts"
+                  component={<RegistrationPage />}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute redirectTo="/contacts" component={<LoginPage />} />
-          }
-        />
-              <Route
-          path="/contacts"
-          element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
-          }
-        />
-      </Route>
-    </Routes>
+            <Route
+              path="/login"
+              element={
+                <PublicRoute redirectTo="/contacts" component={<LoginPage />} />
+              }
+            />
+                  <Route
+              path="/contacts"
+              element={
+                <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+              }
+            />
+          </Route>
+        </Routes>
+        <ToastContainer></ToastContainer>
+      </>
     )
   )
 }

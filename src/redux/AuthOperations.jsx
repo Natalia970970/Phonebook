@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -17,8 +18,10 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
+      toast.success(`You are registred`); 
       return res.data;
     } catch (error) {
+      toast.error(`Sorry, Email or password is incorrect. Please try again `);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -29,10 +32,11 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/users/login', credentials);
-
       setAuthHeader(res.data.token);
+      toast.success(`You are logged in`);
       return res.data;
     } catch (error) {
+      toast.error(`Sorry, try again`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -42,7 +46,9 @@ export const logOut = createAsyncThunk('users/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     clearAuthHeader();
+    toast.success(`You are logged out `);
   } catch (error) {
+    toast.error(`Sorry, something wrong`);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
